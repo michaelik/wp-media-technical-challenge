@@ -1,0 +1,31 @@
+{
+	"name": "wp-media-recruitment/php-assessment-template",
+	"description": "Template for our PHP assessment",
+	"homepage": "https://github.com/wp-media-recruitment/php-assessment-template",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "WP Media",
+			"email": "contact@wp-media.me",
+			"homepage": "https://wp-media.me"
+		}
+	],
+	"type": "library",
+	"config": {
+		"sort-packages": true
+	},
+	"support": {
+		"issues": "https://github.com/wp-media-recruitment/php-assessment-template/issues",
+		"source": "https://github.com/wp-media-recruitment/php-assessment-template"
+	},
+	"require-dev": {
+		"php": ">=7",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+		"phpcompatibility/phpcompatibility-wp": "^2",
+		"wp-coding-standards/wpcs": "^2",
+		"yoast/wp-test-utils": "^0.2"
+	},
+	"autoload": {},
+	"autoload-dev": {},
+	"scripts": {}
+}
