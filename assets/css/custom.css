@@ -1,0 +1,7 @@
+/*User Error, Password Error*/
+.E-error, .P-error{
+	font-weight: 700;
+	font-size: 14px;
+	color: red;
+	display: none;
+}

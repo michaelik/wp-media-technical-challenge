@@ -21,6 +21,7 @@
 	"require-dev": {
 		"php": ">=7",
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+		"guzzlehttp/guzzle": "^7.0",
 		"phpcompatibility/phpcompatibility-wp": "^2",
 		"wp-coding-standards/wpcs": "^2",
 		"yoast/wp-test-utils": "^0.2"
