@@ -3,6 +3,7 @@ namespace Classes;
 
 use Classes\ConnectionClass;
 use Classes\CrawlerClass;
+use Classes\SitemapClass;
 
 class TaskClass 
 {
@@ -12,6 +13,7 @@ class TaskClass
 	{
 		$this->connection = new ConnectionClass();
 		$this->crawler = new CrawlerClass();
+		$this->sitemap = new SitemapClass();
 	}
 
 	public function tasks (): bool
@@ -30,10 +32,15 @@ class TaskClass
 				$this->connection->sql = "INSERT INTO crawler_tbl(url, date_time) VALUES ('$url', '$current_date_time')";
 				$result = $this->connection->execute_query();
 			}
-			if ($result) {
-				return true;
+            /*Check if file exist or not otherwise delete file or suppress error in case file does not exist, and create file*/
+			if (is_file('upload/sitemap/sitemap.html') || !is_file('upload/sitemap/sitemap.html')) 
+			{
+				@unlink('upload/sitemap/sitemap.html');
+				if (true === $this->sitemap->generateSiteMap())
+				{
+					return true;
+				}
 			}
-            
 		}		
 		return false;
 	}

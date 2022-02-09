@@ -21,7 +21,7 @@ if (window.location.pathname != path) {
 }
 
 /*
-  Excuted javascript after the dom content is loaded
+  Excuted javascript after the dom contents is loaded
 */
 window.addEventListener('DOMContentLoaded', event => {
    //Login Authentication
@@ -155,7 +155,24 @@ window.addEventListener('DOMContentLoaded', event => {
                     }
             });
         });
+
+        /*view static html on new tab*/
+        $(document).on('click', '#static', function(){
+            const url = 'uploads/static.html'; 
+            window.open(url, '_blank');
+        });
         
+        /*view sitemap on new tab otherwise*/
+        $(document).on('click', '#sitemap', function(){
+            const url = 'uploads/sitemap/sitemap.html'; 
+            $.get(url)
+            .done(function() { 
+                window.open(url, '_blank');
+            }).fail(function() { 
+                window.open('404.html', '_blank');
+            })
+        });
+
     }
 
 

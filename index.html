@@ -56,7 +56,6 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
-                        <!--  -->
                         <label for="basic-url" class="form-label">Enter URL</label>
                         <form id="url_form" action="src/WP_Crawler.php" method="post">
                             <!-- Start spinner-->
@@ -77,11 +76,9 @@
                                 <button class="btn btn-primary" id="craw_now">Crawl Now!</button>
                             </div>
                         </form>
-
                         <div class="d-grid gap-2 mb-4">
                             <button id="view_data" class="btn btn-primary" type="submit">View Current Crawled Data</button>
                         </div>
-
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -90,8 +87,14 @@
                             <div class="card-body">
                             </div>
                         </div>
-
-                        <!--  -->
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <button id="static" class="col-sm-4 btn btn-primary" type="submit">View Static.html
+                                </button>
+                                <button  id="sitemap" class="col-sm-4 btn btn-primary" type="submit">View Sitemap.html
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
