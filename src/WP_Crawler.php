@@ -29,6 +29,33 @@ if (isset($_POST["action"]))
 	}
 }
 
+// data functionality
+if (isset($_GET["action"])) 
+{
+	if ($_GET["action"] == "fetch")
+	{
+		$table = '<table id="datatablesSimple">
+	                <thead>
+	                    <tr>
+	                        <th>Id</th>
+	                        <th>URL</th>
+	                        <th>Last modified (GMT)</th>
+	                    </tr>
+	                </thead>
+	                <tfoot>
+	                    <tr>
+	                        <th>Id</th>
+	                        <th>URL</th>
+	                        <th>Last modified (GMT)</th>
+	                    </tr>
+	                </tfoot>
+	                <tbody>';
+	    $table .= $connection->fetchData();
+	    $table .= '</tbody>
+              </table>';
+		echo json_encode(["success" => true, "result" => $table]);
+	}
+}
 
 // login functionality
 if (isset($_POST['action']))

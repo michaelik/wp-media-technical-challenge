@@ -130,8 +130,34 @@ window.addEventListener('DOMContentLoaded', event => {
                     $('#error').addClass('alert-danger').removeClass('d-none').html('Please enter valid url');
                 }
         });
+
+        /*Fetch all crawled result from the database and populate to dashboard*/
+        $(document).on('click', '#view_data', function(){
+            let action = "fetch";
+            $.ajax({
+                   type:'GET',
+                   url:'src/WP_Crawler.php',
+                   data:{action:action}
+                }).then(function(res){
+                    let data = $.parseJSON(res);
+                    console.log(data.result);
+                    if (data.success == true) { 
+                        $('.card-body').html(data.result);
+                        // Simple-DataTables
+                        // https://github.com/fiduswriter/Simple-DataTables/wiki
+                        const datatablesSimple = document.getElementById('datatablesSimple');
+                        if (datatablesSimple) {
+                            new simpleDatatables.DataTable(datatablesSimple,{
+                            searchable: false,
+                            fixedHeight: true
+                            });
+                        }
+                    }
+            });
+        });
+        
     }
-    
+
 
    // Toggle the side navigation
    const sidebarToggle = document.body.querySelector('#sidebarToggle');
