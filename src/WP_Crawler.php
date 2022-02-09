@@ -29,6 +29,16 @@ if (isset($_POST["action"]))
 	}
 }
 
+// cron job
+if (!empty($argv[1])) {
+	switch ($argv[1]) {
+		case "tasks":
+		$tasking = new TaskClass();
+		echo $tasking->tasks();
+		break;
+	}
+}
+
 // data functionality
 if (isset($_GET["action"])) 
 {
