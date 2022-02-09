@@ -1,0 +1,35 @@
+/*User Error, Password Error*/
+.E-error, .P-error{
+	font-weight: 700;
+	font-size: 14px;
+	color: red;
+	display: none;
+}
+
+/*Start spinner*/
+.shapes {
+  width: 20px;
+  height: 20px;
+  color: #25b09b;
+}
+
+.shapes::before,
+.shapes::after {
+  content: "";
+  grid-area: 1/1;
+  background:currentColor;
+  clip-path: polygon(0 0,50% 50%, 0 100%);
+  animation: sp1 2s infinite;
+}
+
+.shapes::after {
+  animation-delay: -1.5s;
+  --s:90deg;
+}
+
+@keyframes sp1 {
+    0%,12.5%    {transform:rotate(var(--s,0deg)) rotate(0deg)}
+    37.5%,62.5% {transform:rotate(var(--s,0deg)) rotate(-180deg)}
+    87.5%,100%  {transform:rotate(var(--s,0deg)) rotate(-360deg)}
+}
+/*End Spinner*/
