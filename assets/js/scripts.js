@@ -95,6 +95,44 @@ window.addEventListener('DOMContentLoaded', event => {
         });
    });
 
+   //Verify token and email before proceeding
+    if (localStorage['token'] && localStorage['email']) {   
+         /*Perform crawler*/
+         $('#url_form').on('submit',function(event){
+            // Prevent form submission
+            event.preventDefault();
+            let url_address = $('#host_address').val();
+            // console.log(url_address.split('/').length);
+                if(/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(url_address) || url_address == ""){
+                    if (url_address.split('/').length == 3) {
+                        $('#error').addClass('d-none');
+                        /*Display Spinner*/
+                        $("#shapes").css("display", "grid");
+                        $.ajax({
+                            type: 'POST',
+                            url: $(this).attr('action'),
+                            data: $(this).serialize(),
+                        }).then(function(res){
+                            let data = $.parseJSON(res);
+                            /*Hide Spinner*/
+                            $(".shapes").css("display", "none");
+                            if (data.success == false) {
+                                 $('#error').addClass('alert-danger').removeClass('d-none').html('No internet, please check your internet connection');
+                            }else{
+                                $('#error').addClass('alert-primary').removeClass('d-none').html('Crawler Completed');
+                            }
+                           
+                        });
+                    } else {
+                        $('#error').addClass('alert-danger').removeClass('d-none').html('Please enter valid url');
+                    }
+                } else {
+                    $('#error').addClass('alert-danger').removeClass('d-none').html('Please enter valid url');
+                }
+        });
+    }
+    
+
    // Toggle the side navigation
    const sidebarToggle = document.body.querySelector('#sidebarToggle');
    if (sidebarToggle) {

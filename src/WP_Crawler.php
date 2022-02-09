@@ -2,9 +2,32 @@
 include_once 'includes/autoload.php';
 
 use Classes\ConnectionClass;
+use Classes\TaskClass;
 
 
 $connection = new ConnectionClass();
+$tasking = new TaskClass();
+
+// crawl functionality
+if (isset($_POST["action"])) 
+{
+	if ($_POST["action"] == "crawl")
+	{
+		$host_address = $_POST['host_address'];
+		$connection->sql = "TRUNCATE TABLE host_tbl";
+		$connection->execute_query();
+		$connection->sql = "INSERT INTO host_tbl(host_url) VALUES ('$host_address')";
+		$connection->execute_query();
+	    if (true === $tasking->tasks()) 
+	    {
+	    	echo json_encode(["success" => true]);
+	    }
+	    else
+	    {
+	    	echo json_encode(["success" => false]);
+	    }
+	}
+}
 
 
 // login functionality
