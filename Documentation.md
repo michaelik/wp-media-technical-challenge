@@ -102,7 +102,7 @@ Then the following tasks are executed:
 
 - It calls the function `generateSiteMap()` which creates the sitemap.html based on the crawl results.
 
-###### Setting up the cron
+### Setting up the cron
 
 Window OS was used in building the project, task scheduler was used to perform the cron job on the file 'WP_crawler.php' located at the project directory -Navigate to the directory of the project c:/[upper directory/.../]/michael-Ikechukwu_PHP/AutoScriptRunner/ the two files in this directory are "script.bat" and "shellscript.vbs". These are the process to setup the cronjob, without with the cron wouldn't work. Open the first file(script.bat), they are two script listed. The first is the path to the php executable, and the second is the path to the php file the cron should execute. Modify it to match your directory path, save and close when done. Open the second file(shellscript.vbs), there are three scripts listed. The second line has a path to the "script.bat" file located within the project directory c:/[upper directory/.../]/michael-Ikechukwu_PHP/AutoScriptRunner/script.bat -modify it to match your directory path. 
 

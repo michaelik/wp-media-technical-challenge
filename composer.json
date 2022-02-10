@@ -12,7 +12,8 @@
 	],
 	"type": "library",
 	"config": {
-		"sort-packages": true
+		"sort-packages": true,
+		"bin-dir": "vendor/bin"
 	},
 	"support": {
 		"issues": "https://github.com/wp-media-recruitment/php-assessment-template/issues",
@@ -23,6 +24,7 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
 		"guzzlehttp/guzzle": "^7.0",
 		"phpcompatibility/phpcompatibility-wp": "^2",
+		"squizlabs/php_codesniffer": "3.*",
 		"wp-coding-standards/wpcs": "^2",
 		"yoast/wp-test-utils": "^0.2"
 	},
