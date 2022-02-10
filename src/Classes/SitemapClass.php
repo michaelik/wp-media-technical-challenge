@@ -1,20 +1,69 @@
 <?php 
+/**
+ * This file facilitates the sitemap-specific functionality of the application.
+ *
+ * PHP version 7
+ * 
+ * @category Mycategory
+ * 
+ * @package MyPackage
+ *
+ * @author Michael Ikechikwu <mikeikechi3@gmail.com>
+ *
+ * @license GPL-2.0+ <https://spdx.org/licenses/GPL-2.0+>
+ *
+ * @link https://www.linkedin.com/in/ikechukwu-michael-330624166/ 
+ *
+ * @since 1.0.0 
+ */
+
 namespace Classes;
 
 use Classes\ConnectionClass;
-
+/**
+ * Define the SitemapClass and set its functionality.
+ *
+ * PHP version 7
+ * 
+ * @category Mycategory
+ * 
+ * @package MyPackage
+ *
+ * @author Michael Ikechikwu <mikeikechi3@gmail.com>
+ *
+ * @license GPL-2.0+ <https://spdx.org/licenses/GPL-2.0+>
+ *
+ * @link https://www.linkedin.com/in/ikechukwu-michael-330624166/ 
+ *
+ * @since 1.0.0 
+ */
 class SitemapClass
 {
-	private $connection;
-	public function __construct ()
-	{
-		$this->connection = new  ConnectionClass();
-	}
+    private $_connection;
 
-	public function generateSiteMap (): bool
-	{
-		$sitemapText = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-		<html xmlns="http://www.w3.org/1999/xhtml" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9">
+    /**
+     * Establish connection to the database
+     *
+     * @since 1.0.0
+     */
+    public function __construct()
+    {
+        $this->_connection = new  ConnectionClass();
+    }
+    
+    /**
+     * Generate sitemap file 
+     *
+     * @return integer
+     */
+    public function generateSiteMap(): bool
+    {
+        $sitemapText = '<!DOCTYPE html PUBLIC 
+            "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/
+            REC-html40/loose.dtd">
+            <html xmlns="http://www.w3.org/1999/xhtml" 
+            xmlns:html="http://www.w3.org/TR/REC-html40" 
+		    xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9">
 		    <head>
 		        <title>XML Sitemap</title>
 		        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -79,18 +128,17 @@ class SitemapClass
 		                    <th>URL of sub-sitemap</th>
 		                    <th>Last modified (GMT)</th>
 		                </tr>';
-		$sitemapText .= $this->connection->fetchData(); 
-		$sitemapText .= '</table>
+        $sitemapText .= $this->_connection->fetchData(); 
+        $sitemapText .= '</table>
 					    </div>
 					  </body>
 					</html>';
-		$sitemap = fopen("./../uploads/sitemap/sitemap.html", "w") or die("Unable to open file!");
-		if (false === fwrite($sitemap, $sitemapText))
-		{
-			return false;
-		}
-		return true;
-		fclose($sitemap);
-	}
-	
+        $sitemap = fopen("./../uploads/sitemap/sitemap.html", "w");
+        if (false === fwrite($sitemap, $sitemapText)) {
+            return false;
+        }
+        return true;
+        fclose($sitemap);
+    }
+    
 }
