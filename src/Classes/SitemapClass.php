@@ -54,7 +54,7 @@ class SitemapClass
     /**
      * Generate sitemap file 
      *
-     * @return integer
+     * @return bool
      */
     public function generateSiteMap(): bool
     {

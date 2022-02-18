@@ -18,7 +18,7 @@
  * @since 1.0.0 
  */
 
-require_once 'includes/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Classes\ConnectionClass;
 use Classes\TaskClass;

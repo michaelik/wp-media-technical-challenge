@@ -28,7 +28,11 @@
 		"wp-coding-standards/wpcs": "^2",
 		"yoast/wp-test-utils": "^0.2"
 	},
-	"autoload": {},
+	"autoload": {
+        "classmap": [
+            "src/"
+        ]
+	},
 	"autoload-dev": {},
 	"scripts": {}
 }
