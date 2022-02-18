@@ -18,9 +18,6 @@
  */
 
 namespace Classes;
-/*Composer's autoload*/
-require_once './../vendor/autoload.php';
-
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
